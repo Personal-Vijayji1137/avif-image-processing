@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lit Star Image Processing Server is Unend Running ...</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            font-family: 'Ubuntu Mono', monospace;
+            padding: 20px;
+        }
+
+        .terminal {
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 90vw;
+            margin: 0 auto;
+            height: 70dvh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background-color: #2d2d2d;
+            height: 25px;
+            border-radius: 5px 5px 0 0;
+            margin: -20px -20px 20px -20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .red {
+            background-color: #ff5f56;
+        }
+        .yellow-dot {
+            background-color: darkorange;
+        }
+        .green {
+            background-color: #27c93f;
+        }
+
+        .terminal-title {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .prompt {
+            color: #5fd7ff;
+        }
+
+        .command {
+            color: #f0f0f0;
+        }
+
+        .output {
+            margin: 10px 0;
+        }
+
+        .blue {
+            color: #5fd7ff;
+        }
+
+        .green {
+            color: #5fff87;
+        }
+
+        .yellow {
+            color: #27c93f;
+            font-weight: bolder;
+        }
+
+        .purple {
+            color: #af87ff;
+        }
+
+        .red {
+            color: #ff5f5f;
+        }
+
+        .gray {
+            color: #888;
+        }
+
+        .white {
+            color: #ffffff;
+        }
+
+        .cyan {
+            color: #5fffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-button red"></div>
+            <div class="terminal-button yellow-dot"></div>
+            <div class="terminal-button green"></div>
+            <div class="terminal-title">Jitender@I-Plus-T-Solution: ~/litrust-server</div>
+        </div>
+        <div class="output">
+            <span class="prompt">Jitender@I-Plus-T-Solution:~/litrust-server$</span> <span class="command">cargo build --release</span>
+        </div>
+        <div class="output">
+            <span class="yellow"> Compiling</span> litrust-server v0.1.0 (/home/user/litrust-server)<br/>
+            <span class="yellow"> Finished</span> `release` profile [optimized] target(s) in 0.45s<br/>
+        </div>
+        <div class="output">
+            <span class="prompt">Jitender@I-Plus-T-Solution:~/litrust-server$</span> <span class="command">cargo run --release</span>
+        </div>
+        <div class="output">
+            <span class="yellow"> Finished</span> `release` profile [optimized] target(s) in 0.24s<br/>
+            <span class="yellow"> Running</span> `target/release/litrust-server`<br/>
+            <span class="cyan">[SERVER]</span> <span class="white">Starting server on <a href="/">0.0.0.0:8080</a></span><br/>
+            <span class="cyan">[SERVER]</span> <span class="white">Listening for connections...</span><br/>
+            <span class="cyan">[DATABASE CONNECTION]</span> <span class="yellow">Connected successfully</span><br/>
+            <span class="cyan">[CONFIG]</span> <span class="blue">Loaded configuration from /home/user/litrust-server/config.toml</span><br/>
+            <span class="cyan">[MIDDLEWARE]</span> <span class="purple">Added 3 middleware layers</span><br/>
+            <span class="cyan">[SERVER]</span> <span class="white cursorblink">Server ready</span><br/>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cursor = document.createElement('span');
+            cursor.className = 'blinking-cursor';
+            cursor.textContent = '█';
+            document.querySelector('.cursorblink').appendChild(cursor);
+
+            setInterval(() => {
+                cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden';
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
