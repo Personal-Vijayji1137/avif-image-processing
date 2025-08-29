@@ -77,19 +77,17 @@ pub async fn image_handler(
         let vf = match (width, height) {
             (Some(w), Some(h)) => {
                 format!(
-                    "scale='if(gt(a,{w}/{h}),-1,{w})':'if(gt(a,{w}/{h}),{h},-1)',\
+                    "scale='if(gt(a,{w}/{h}),-1,{w})':'if(gt(a,{w}/{h}),{h},-1)':force_original_aspect_ratio=decrease,\
              crop={w}:{h}"
                 )
             }
-            (Some(w), None) => format!("scale={}: -1", w),
-            (None, Some(h)) => format!("scale=-1:{}", h),
-            _ => "scale=iw:ih".into(),
+            (Some(w), None) => format!("scale=trunc({}/2)*2:-2", w),
+            (None, Some(h)) => format!("scale=-2:trunc({}/2)*2", h),
+            _ => "scale=trunc(iw/2)*2:trunc(ih/2)*2".into(),
         };
-
         let out = convert_to_avif(data.to_vec(), Some(vf))
             .await
             .map_err(actix_web::error::ErrorInternalServerError)?;
-
         Ok(HttpResponse::Ok().content_type("image/avif").body(out))
     }
 }
