@@ -16,7 +16,7 @@ export default {
         return new Response(`Failed to fetch image: ${response.status}`, { status: 500 });
       }
       const resToCache = new Response(response.body, response);
-	  ctx.waitUntil(cache.put(request, resToCache.clone()));
+	    ctx.waitUntil(cache.put(request, resToCache.clone()));
       return resToCache;
     } catch (err) {
       return new Response("Internal Error: " + err.message, { status: 500 });
